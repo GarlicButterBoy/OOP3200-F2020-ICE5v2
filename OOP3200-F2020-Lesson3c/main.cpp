@@ -51,11 +51,18 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 
 int main()
 {
-	const Vector3D point1(5.0f, 20.0f);
-	const Vector3D point2(10.6f, 100.34f, 10.0f);
+	Vector3D<float> point1;
+	Vector3D<float> point2;
 
-	std::cout << point1.ToString() << std::endl;
-	std::cout << point2.ToString() << std::endl;
+	std::cout << "Enter the point1's Position (x, y, z): ";
+	std::cin >> point1;
+
+	std::cout << "Enter the point2's Position (x, y, z): ";
+	std::cin >> point2;
+
+
+	std::cout << point1 << std::endl;
+	std::cout << point2 << std::endl;
 
 	//std::vector<GameObject*> gameObjects;
 
