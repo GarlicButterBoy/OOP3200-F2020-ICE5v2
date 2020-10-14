@@ -3,6 +3,8 @@
 #define __VECTOR3D__
 #include <string>
 #include <iostream>
+#include <assert.h>
+#include "Vector2D.h"
 
 template <class T>
 class Vector3D
@@ -10,6 +12,8 @@ class Vector3D
 
 public:
 	Vector3D(T x = static_cast<T>(0.0), T y = static_cast<T>(0.0), T z = static_cast<T>(0.0));
+	Vector3D(const std::string& x, const std::string& y, const std::string& z);
+	Vector3D(Vector2D& vector_2d);
 	~Vector3D();
 
 	//Mutators - Setters
@@ -56,6 +60,42 @@ template <class T>
 Vector3D<T>::Vector3D(const T x, const T y, const T z) : m_x(x), m_y(y), m_z(z)
 {
 
+}
+
+template <class T>
+Vector3D<T>::Vector3D(const std::string& x, const std::string& y, const std::string& z)
+{
+	if(typeid(T) == typeid(int))
+	{
+		m_x = std::stoi(x);
+		m_y = std::stoi(y);
+		m_z = std::stoi(z);
+	}
+
+	if (typeid(T) == typeid(float))
+	{
+		m_x = std::stof(x);
+		m_y = std::stof(y);
+		m_z = std::stof(z);
+	}
+
+	if (typeid(T) == typeid(double))
+	{
+		m_x = std::stod(x);
+		m_y = std::stod(y);
+		m_z = std::stod(z);
+	}
+
+	//assert((typeid(T) != typeid(int)) || (typeid(T) != typeid(float)) || (typeid(T) != typeid(double)),
+	//	"Error: No Conversion Possible");
+}
+
+template <class T>
+Vector3D<T>::Vector3D(Vector2D& vector_2d)
+{
+	m_x = static_cast<T>(vector_2d.GetX());
+	m_y = static_cast<T>(vector_2d.GetY());
+	m_z = static_cast<T>(0.0);
 }
 
 template <class T>

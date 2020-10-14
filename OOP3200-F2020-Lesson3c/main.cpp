@@ -51,8 +51,12 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 
 int main()
 {
-	Vector3D<float> point1;
+	Vector2D dPoint(2.0f, 3.0f);
+
+	Vector3D<int> point1;
 	Vector3D<float> point2;
+	Vector3D<float> point3(dPoint);
+	Vector3D<int> point4("4", "5", "6");
 
 	std::cout << "Enter the point1's Position (x, y, z): ";
 	std::cin >> point1;
@@ -63,7 +67,8 @@ int main()
 
 	std::cout << point1 << std::endl;
 	std::cout << point2 << std::endl;
-
+	std::cout << point3 << std::endl;
+	std::cout << point4 << std::endl;
 	//std::vector<GameObject*> gameObjects;
 
 	//int num_of_GO;
